@@ -24,7 +24,6 @@ class RmDuplicate:
 
   def file_remove_same(self, signal_cust, work='C:/Users/Jon/Downloads', pattern='*.mp4'):
     output = []
-    finger_print_set = set()
     finger_print_dict = dict()
     tmpdir = Path(work, 'tmp')
     tmpdir.mkdir(parents=True, exist_ok=True)
@@ -35,14 +34,6 @@ class RmDuplicate:
       output.append(str(item))
       signal_cust.signal_str.emit(str(item))
       finger_print = self.gen_md5(item)
-      # if finger_print in finger_print_set:
-      #   # os.remove(item)
-      #   # print('moving to tmp dir...')
-      #   textbrowser.append('--- ---> moving to tmp dir...')
-      #   output.append('--- ---> moving to tmp dir...')
-      #   shutil.move(item, tmpdir)
-      # else:
-      #   finger_print_set.add(finger_print)
       if finger_print_dict.get(finger_print):
         output.append('---> moving to tmp dir...')
         signal_cust.signal_str.emit('---> moving to tmp dir...')
