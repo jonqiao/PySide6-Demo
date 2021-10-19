@@ -65,15 +65,11 @@ class MainWindow(QtWidgets.QMainWindow):
 
   @QtCore.Slot()
   def printToGui(self, fb, text):
-    print('-------printToGui-------')
-    print(text)
     fb.append(str(text))
     fb.ensureCursorVisible()
 
   @QtCore.Slot()
   def append_signal_str(self, text):
-    print('-------append_signal_str-------')
-    print(text)
     self.ui.textBrowser.append(text)
     self.ui.textBrowser.ensureCursorVisible()
 
